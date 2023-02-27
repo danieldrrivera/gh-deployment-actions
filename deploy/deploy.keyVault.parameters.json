@@ -1,0 +1,107 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "keyVaultName": {
+            "value": "kv-dxrvault"
+        },
+        "keyVaultLocation": {
+            "value": "eastus"
+        },
+        "keyVaultTags": {
+            "value": {
+                "environment": "Development",
+                "department": "DevOps"
+            }
+        },
+        "keyVaultSkuName": {
+            "value": "standard"
+        },
+        "keyVaultAddAccessPolicies": {
+            "value": true
+        },
+        "keyVaultAccessPolicies": {
+            "value": {
+                "identities": [
+                    {
+                        "identityName": "MSDN_SUB_ACCESS",
+                        "permissions": {
+                            "certificates": [
+                                "all"
+                            ],
+                            "keys": [
+                                "all"
+                            ],
+                            "secrets": [
+                                "all"
+                            ],
+                            "storage": [
+                                "all"
+                            ]
+                        }
+                    },
+                    {
+                        "identityName": "DevOpsDeployer",
+                        "permissions": {
+                            "certificates": [
+                                "all"
+                            ],
+                            "keys": [
+                                "all"
+                            ],
+                            "secrets": [
+                                "all"
+                            ],
+                            "storage": [
+                                "all"
+                            ]
+                        }
+                    },
+                    {
+                        "identityName": "DevOpsDeployer2",
+                        "permissions": {
+                            "certificates": [
+                                "list",
+                                "get"
+                            ],
+                            "keys": [
+                                "get",
+                                "list"
+                            ],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set"
+                            ],
+                            "storage": [
+                                "get",
+                                "list",
+                                "set"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "keyVaultSecrets": {
+            "value": {
+                "secrets": [
+                    {
+                        "secretName": "vmAdminPassword",
+                        "tags": {
+                            "environment": "Development",
+                            "department": "DevOps"
+                        }
+                    },
+                    {
+                        "secretName": "sqlAdminPassword",
+                        "tags": {
+                            "environment": "Development",
+                            "department": "DevOps"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

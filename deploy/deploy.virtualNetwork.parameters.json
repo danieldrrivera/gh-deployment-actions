@@ -1,0 +1,35 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualNetworkName" :{
+            "value": "vnet-dxr01"
+        },
+        "virtualNetworkLocation": {
+            "value": "eastus"
+        },
+        "virtualNetworkTags": {
+            "value": {
+                "environment": "Development",
+                "department": "DevOps"
+            }
+        },
+        "virtualNetworkAddressPrefixes": {
+            "value": [
+                "10.0.0.0/16"
+            ]
+        },
+        "virtualNetworkSubnetPrefixes":{
+            "value": [
+                "10.0.1.0/24",
+                "10.0.2.0/24"
+            ]
+        },
+        "virtualNetworkSubnetNames": {
+            "value": [
+                "subnet-dxr01",
+                "subnet-dxr02"
+            ]
+        }
+    }
+}

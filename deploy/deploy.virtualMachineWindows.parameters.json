@@ -1,0 +1,51 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName" :{
+            "value": "dxr01"
+        },
+        "vmLocation": {
+            "value": "eastus"
+        },
+        "vmTags": {
+            "value": {
+                "environment": "Development",
+                "department": "DevOps"
+            }
+        },
+        "vmVnetName": {
+            "value": "vnet-dxr01"
+        },
+        "vmSubnetName": {
+            "value": "subnet-dxr01"
+        },
+        "vmPublicIpEnabled" :{
+            "value": true
+        },
+        "vmAdminUsername": {
+            "value": "dxradmin"
+        },
+        "vmSize": {
+            "value": "Standard_B1s"
+        },
+        "vmOSVersion": {
+            "value": "2022-datacenter-core-g2"
+        },
+        "vmPublicIPAllocationMethod": {
+            "value": "Dynamic"
+        },
+        "vmPublicIpName": {
+            "value": "dxr01-publicip"
+        },
+        "vmPublicIpSku": {
+            "value": "Basic"
+        },
+        "vmBootDiagnosticsEnabled": {
+            "value": true
+        },
+        "vmBootDiagnosticsStorageAccountName": {
+            "value": "sadxr"
+        }
+    }
+}
