@@ -1,4 +1,4 @@
-name: Deploy Bicep to Azure
+name: Build Bicep File and Upload
 on: [workflow_dispatch, push]
 jobs:
   build:
