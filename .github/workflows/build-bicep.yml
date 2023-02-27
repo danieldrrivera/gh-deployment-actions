@@ -11,3 +11,8 @@ jobs:
         with:
           bicepFilePath: ./deploy/deploy-appService.bicep
           outputFilePath: azuredeploy.json
+      - name: Upload Bicep Output
+        uses: actions/upload-artifact@v3
+        with:
+          name: bicep-output
+          path: azuredeploy.json
