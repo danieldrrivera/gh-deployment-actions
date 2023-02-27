@@ -16,3 +16,16 @@ jobs:
         with:
           name: bicep-output
           path: azuredeploy.json
+      - name: Azure Login with OIDC
+        uses: Azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - name: Preview changes
+        uses: Azure/deployment-what-if-action@v1.0.0
+        with:
+          subscription: ${{ secrets.SUBSCRIPTION_ID }}
+          resourceGroup: '${{ vars.RESOURCE_GROUP_NAME }}'
+          templateFile: azuredeploy.json # main.bicep
+          parametersFile: ./deploy/deploy.appService.parameters.json
