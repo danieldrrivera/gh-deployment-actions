@@ -32,3 +32,24 @@ jobs:
           resourceGroup: '${{ vars.RESOURCE_GROUP_NAME }}'
           templateFile: ./deploy/deploy-appService.bicep # main.bicep
           parametersFile: ./deploy/deploy.appService.parameters.json
+  deploy-dev:
+    needs: build-whatif
+    environment:
+      name: DEV
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Azure Login with OIDC
+        uses: Azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - name: Deploy Infrastructure
+        uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          resourceGroupName: '${{ vars.RESOURCE_GROUP_NAME }}'
+          template: ./deploy/deploy-appService.bicep
+          parameters: ./deploy/deploy.appService.parameters.json
