@@ -1,4 +1,4 @@
-name: Build Bicep File and Upload
+name: Build Bicep File and Deploy
 on: [workflow_dispatch, push]
 permissions:
   contents: read
