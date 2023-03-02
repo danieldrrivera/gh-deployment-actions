@@ -21,12 +21,10 @@ jobs:
     steps:
       - name: Get Code
         uses: actions/checkout@v3
-      - name: Azure Login with OIDC
+      - name: Azure Login
         uses: Azure/login@v1
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          creds: '{"clientId":"${{ secrets.AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_TENANT_ID }}"}'
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
