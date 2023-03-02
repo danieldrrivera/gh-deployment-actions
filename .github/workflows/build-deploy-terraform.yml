@@ -31,8 +31,7 @@ jobs:
       - name: Terraform Init
         run: |
           ls -al
-          pushd /modules/terraform/azurerm_resource_group
-          # pushd gh-deployment-actions/modules/terraform/azurerm_resource_group
+          cd modules/terraform/azurerm_resource_group
           terraform init
       - name: Terraform Plan
         id: tf-plan
@@ -42,7 +41,6 @@ jobs:
           echo ${{ steps.tf-plan.outputs.stdout }}
           echo ${{ steps.tf-plan.outputs.stderr }}
           echo ${{ steps.tf-plan.outputs.exitcode }}
-          popd
   deploy-dev:
     needs: terraform-plan
     environment:
