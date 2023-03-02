@@ -31,8 +31,8 @@ jobs:
       - name: Terraform Init
         run: |
           ls -al
-          # pushd modules/terraform/azurerm_resource_group
-          pushd gh-deployment-actions/modules/terraform/azurerm_resource_group
+          pushd /modules/terraform/azurerm_resource_group
+          # pushd gh-deployment-actions/modules/terraform/azurerm_resource_group
           terraform init
       - name: Terraform Plan
         id: tf-plan
