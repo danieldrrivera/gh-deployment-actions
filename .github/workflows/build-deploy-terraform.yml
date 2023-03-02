@@ -1,5 +1,14 @@
 name: Build Terraform and Deploy
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    branches:
+      - 'main'
+  push:
+    branches:
+      - 'main'
+    paths:
+      - '**/.github/workflows/build-deploy-terraform*'
+      - '**/modules/terraform/**'
 permissions:
   contents: read
   id-token: write
