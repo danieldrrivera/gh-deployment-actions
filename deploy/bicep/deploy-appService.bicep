@@ -1,3 +1,11 @@
+// Deploy this template using the following command:
+// az deployment group create \
+// az deployment group what-if \
+//   --name myASDeployment \
+//   --resource-group rg-myresourcegroup \
+//   --template-file deploy/deploy-appService.bicep \
+//   --parameters @deploy/deploy.appService.parameters.json
+
 @description('The name of the App Service to create.')
 @minLength(2)
 @maxLength(60)
@@ -36,32 +44,13 @@ obtain the source code for the app service as show here:
 ''')
 param appServiceSourceControl object
 
-var appServicePlanName = '${appServiceName}-ASP'
-
-resource appService 'Microsoft.Web/sites@2022-03-01' = {
+module appService '../modules/bicep/appService.bicep' = {
   name: appServiceName
-  location: appServiceLocation
-  tags: appServiceTags
-  properties: {
-    serverFarmId: appServicePlan.outputs.appServicePlanId
-  }
-}
-
-module appServicePlan 'appServicePlan.bicep' = {
-  name: appServicePlanName
   params: {
-    appServicPlanName: appServicePlanName
-    appServicePlanLocation: appServiceLocation
+    appServiceName: appServiceName
+    appServiceLocation: appServiceLocation
+    appServiceTags: appServiceTags
+    appServiceSourceControl: appServiceSourceControl
     appServicePlanDetails: appServicePlanDetails
-  }
-}
-
-resource sourceControl 'Microsoft.Web/sites/sourcecontrols@2022-03-01' = {
-  name: 'web'
-  parent: appService
-  properties: {
-    repoUrl: appServiceSourceControl.sourceControlUrl
-    branch: appServiceSourceControl.sourceControlBranch
-    isManualIntegration: appServiceSourceControl.sourecControlManualIntegration
   }
 }

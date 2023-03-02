@@ -23,7 +23,7 @@ An object specifying the tags as key:value pairs to assign to this resource as s
 ''')
 param cosmosDBTags object = {}
 
-module cosmosDB '../modules/cosmosDatabase.bicep' = {
+module cosmosDB '../modules/bicep/cosmosDatabase.bicep' = {
   name: cosmosDBAccountName
   params: {
     cosmosDBAccountName: cosmosDBAccountName

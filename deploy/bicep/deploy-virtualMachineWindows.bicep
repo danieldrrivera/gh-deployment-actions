@@ -87,7 +87,7 @@ An object specifying the tags as key:value pairs to assign to this resource as s
 ''')
 param vmTags object = {}
 
-module virtualMachine '../modules/virtualMachineWindows.bicep' = {
+module virtualMachine '../modules/bicep/virtualMachineWindows.bicep' = {
   name: vmName
   params: {
     vmAdminUsername: vmAdminUsername

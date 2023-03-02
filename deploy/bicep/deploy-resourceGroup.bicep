@@ -30,7 +30,7 @@ An object specifying the tags as key:value pairs to assign to this resource as s
 param resourceGroupTags object = {}
 
 // Create resource group
-module resourceGroup '../modules/resourceGroup.bicep' = {
+module resourceGroup '../modules/bicep/resourceGroup.bicep' = {
   name: resourceGroupName
   params: {
     resourceGroupName: resourceGroupName
@@ -45,7 +45,7 @@ resource existingResourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' e
 }
 
 // If enabled, create a resource group lock by passing in the scope of the resource group
-module resourceGroupLock '../modules/resourceLock.bicep' = if(enableResourceGroupLock) {
+module resourceGroupLock '../modules/bicep/resourceLock.bicep' = if(enableResourceGroupLock) {
   scope: existingResourceGroup
   name: '${resourceGroupName}-lock'
   params: {
