@@ -9,9 +9,9 @@ on:
     paths:
       - '**/.github/workflows/build-deploy-terraform*'
       - '**/modules/terraform/**'
-defaults:
-  run:
-    working-directory: "modules/terraform/azurerm_resource_group"
+# defaults:
+#   run:
+#     working-directory: "modules/terraform/azurerm_resource_group"
 permissions:
   contents: read
   id-token: write
@@ -31,9 +31,13 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
             terraform_version: 1.3.9
+      - name: Change into modules directory
+        run: |
+          cd modules
+          cd terraform
+          cd azurerm_resource_group
       - name: Terraform Init
         run: |
-          pwd
           terraform init
       - name: Terraform Plan
         id: tf-plan
