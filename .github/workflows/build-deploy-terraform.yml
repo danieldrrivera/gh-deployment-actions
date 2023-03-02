@@ -36,6 +36,7 @@ jobs:
           pwd
           cd modules
           pwd
+          ls -al
       - name: Change into modules directory
         run: |
           pwd
