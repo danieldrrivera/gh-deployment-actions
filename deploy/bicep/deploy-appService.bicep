@@ -44,7 +44,7 @@ obtain the source code for the app service as show here:
 ''')
 param appServiceSourceControl object
 
-module appService '../modules/bicep/appService.bicep' = {
+module appService '../../modules/bicep/appService.bicep' = {
   name: appServiceName
   params: {
     appServiceName: appServiceName

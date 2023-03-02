@@ -50,7 +50,7 @@ param storageAccountSkuName string = 'Standard_LRS'
 ])
 param storageAccountType string = 'StorageV2'
 
-module storageAccount '../modules/bicep/storageAccounts.bicep' = {
+module storageAccount '../../modules/bicep/storageAccounts.bicep' = {
   name: storageAccountName
   params: {
     storageAccountName: storageAccountName

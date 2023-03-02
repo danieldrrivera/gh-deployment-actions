@@ -31,7 +31,7 @@ An object specifying the tags as key:value pairs to assign to this resource as s
 ''')
 param containerRegistryTags object = {}
 
-module containerRegistry '../modules/bicep/containerRegistry.bicep' = {
+module containerRegistry '../../modules/bicep/containerRegistry.bicep' = {
   name: containerRegistryName
   params: {
     containerRegistryLocation: containerRegistryLocation

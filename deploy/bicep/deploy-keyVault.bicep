@@ -81,7 +81,7 @@ Key Vault as show here:
 ''')
 param keyVaultSecrets object
 
-module keyVault '../modules/keyVault.bicep' = {
+module keyVault '../../modules/keyVault.bicep' = {
   name: keyVaultName
   params: {
     keyVaultName: keyVaultName

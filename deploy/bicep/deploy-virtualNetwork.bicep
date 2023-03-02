@@ -32,7 +32,7 @@ param virtualNetworkSubnetPrefixes array
 @description('An array of subnet names that will be used in the creation of the subnets.')
 param virtualNetworkSubnetNames array
 
-module virtualNetwork '../modules/bicep/virtualNetwork.bicep' =  {
+module virtualNetwork '../../modules/bicep/virtualNetwork.bicep' =  {
   name: virtualNetworkName
   params: {
     virtualNetworkName: virtualNetworkName

@@ -22,7 +22,7 @@ param identityLocation string = resourceGroup().location
 ])
 param identityRoleType string
 
-module devopsServicePrincipal '../modules/bicep/aadServicePrincipal.bicep' = {
+module devopsServicePrincipal '../../modules/bicep/aadServicePrincipal.bicep' = {
   name: identityName
   params: {
     identityName: identityName
