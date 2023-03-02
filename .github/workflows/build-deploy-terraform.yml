@@ -9,6 +9,9 @@ on:
     paths:
       - '**/.github/workflows/build-deploy-terraform*'
       - '**/modules/terraform/**'
+# defaults:
+#   run:
+#     working-directory: ${{ env.tf_actions_working_dir }}
 permissions:
   contents: read
   id-token: write
@@ -33,6 +36,7 @@ jobs:
           cd modules/terraform/azurerm_resource_group
       - name: Terraform Init
         run: |
+          echo ${{ env.tf_actions_working_dir }}
           terraform init
       - name: Terraform Plan
         id: tf-plan
