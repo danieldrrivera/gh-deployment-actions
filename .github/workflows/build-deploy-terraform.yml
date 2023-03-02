@@ -34,7 +34,11 @@ jobs:
       - name: Change into modules directory
         run: |
           cd modules
+      - name: Change into modules directory
+        run: |
           cd terraform
+      - name: Change into modules directory
+        run: |
           cd azurerm_resource_group
       - name: Terraform Init
         run: |
