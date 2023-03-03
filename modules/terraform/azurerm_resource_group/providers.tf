@@ -8,7 +8,7 @@ required_providers {
 backend "azurerm" {
     resource_group_name = "DevOpsRG"
     storage_account_name = "devopsterraformstatesa"
-    container_name = "tfstate\resource_group"
+    container_name = "tfstate"
     key = "resource.group.tfstate"
 }
 }
